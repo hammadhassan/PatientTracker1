@@ -9,11 +9,12 @@ class PatientForm extends Component {
     return (
       <View>
 
-          <TextInput placeholder="Patient Name"></TextInput>
-          <TextInput placeholder="Patient Disease"></TextInput>
-          <TextInput placeholder="Doctor Name"></TextInput>
-          <TextInput placeholder="Day of Appointment"></TextInput>
+            <TextInput placeholder="Patient Name"></TextInput>
+            <TextInput placeholder="Patient Problem"></TextInput>
+            <TextInput placeholder="Doctor Name"></TextInput>
+            <TextInput placeholder="Day of Appointment"></TextInput>
             <Button title="Add Patients" onPress={this.addPatients.bind(this)}/>
+
       </View>
     );
   }
