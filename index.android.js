@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {  AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
 // import Home from "./src/Home";
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 import Details from "./src/Details";
 import PatientForm from "./src/Form";
 
@@ -24,7 +24,7 @@ export default class PatientsTracker1 extends Component {
   }
 }
 
-const AppHome = StackNavigator({
+const AppHome = TabNavigator({
   Home: { screen: PatientsTracker1 },
   Details: { screen: Details}
 });

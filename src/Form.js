@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import {  StyleSheet, Text, View, Button, TextInput, Form} from 'react-native';
+import {  StyleSheet, Text, View, Button, TextInput, Form,} from 'react-native';
 
 class PatientForm extends Component {
+  addPatients() {
+    alert("Patients has been added")
+  }
   render() {
     return (
       <View>
@@ -10,7 +13,7 @@ class PatientForm extends Component {
           <TextInput placeholder="Patient Disease"></TextInput>
           <TextInput placeholder="Doctor Name"></TextInput>
           <TextInput placeholder="Day of Appointment"></TextInput>
-            <Button value="Add Patient"></Button>
+            <Button title="Add Patients" onPress={this.addPatients.bind(this)}/>
       </View>
     );
   }
