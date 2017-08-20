@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {  AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
-import Home from "./src/Home";
+// import Home from "./src/Home";
 import { StackNavigator } from 'react-navigation';
 import Details from "./src/Details";
+import PatientForm from "./src/Form";
 
 export default class PatientsTracker1 extends Component {
   static navigationOptions = {
@@ -17,27 +18,12 @@ export default class PatientsTracker1 extends Component {
           onPress={() => navigate('Details')}
           title="Click for details"
         />
-          <Home />
+          <PatientForm />
       </View>
     );
   }
 }
-/*
-class Details extends Component {
-  static navigationOptions = {
-      title: 'Patient Lucy',
-    };
-  render() {
-    return (
-      <View>
-          <Text>
-            Details of Lucy
-          </Text>
-      </View>
-    );
-  }
-}
-*/
+
 const AppHome = StackNavigator({
   Home: { screen: PatientsTracker1 },
   Details: { screen: Details}
@@ -60,9 +46,6 @@ const styles = StyleSheet.create({
   //   color: '#333333',
   //   marginBottom: 5,
   // },
-//   map: {
-//     flex: 1,
-//   },
 });
 
 AppRegistry.registerComponent('PatientsTracker1', () => AppHome);
