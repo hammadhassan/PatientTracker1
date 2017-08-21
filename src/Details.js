@@ -6,11 +6,11 @@ export default class Details extends Component {
   state = {
     list: [
       {
-      name: "Abc",
-      problem: "fgh",
-      doctor: "kt",
-      day: "tuesday",
-      time: new Date();
+      name: this.refs.name,
+      problem: this.refs.pro,
+      doctor: this.refs.dr,
+      day: this.refs.day,
+      time: new Date()
       }
     ]
   }
