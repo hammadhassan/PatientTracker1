@@ -4,6 +4,7 @@ import {  AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Details from "./src/Details";
 import PatientForm from "./src/Form";
+import NavBar from "./src/NavBar";
 
 export default class PatientsTracker1 extends Component {
   static navigationOptions = {
@@ -14,17 +15,19 @@ export default class PatientsTracker1 extends Component {
     return (
       <View>
         <Text>Hello, Navigation!</Text>
-        <Button
+        {/* <Button
           onPress={() => navigate('Details')}
           title="Click for details"
-        />
+        /> */}
           <PatientForm />
+          {/* <NavBar /> */}
       </View>
     );
   }
 }
 
 const AppHome = TabNavigator({
+  initialRoute: {screen: NavBar},
   Home: { screen: PatientsTracker1 },
   Details: { screen: Details}
 });
