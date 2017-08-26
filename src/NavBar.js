@@ -45,17 +45,18 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },*/
     searchBar: {
-        marginTop: 34,
+        marginTop: 10,
         padding: 3,
         paddingLeft: 8,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#FFF"
+        backgroundColor: "#FFF",
+        alignSelf: "center",
     },
     searchBarInput: {
         flex: 1,
         fontSize: 15,
-        height: 30,
+        // height: 35,
     }
 });
 
