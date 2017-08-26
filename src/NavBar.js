@@ -6,12 +6,12 @@ class NavBar extends Component {
     alert("you press");
   }
   render() {
+      {/* <View style={styles.navbar}>
+          <Text style={styles.navbarTitle}>Patients Tracker App</Text>
+          <Text style={styles.navbarButton} onPress={this.onPress}>Search</Text>
+      </View> */}
     return (
-      <View>
-          <View style={styles.navbar}>
-              {/* <Text style={styles.navbarTitle}>Patients Tracker App</Text>
-              <Text style={styles.navbarButton} onPress={this.onPress}>Search</Text> */}
-              <View style={styles.searchBar}>
+          <View style={styles.searchBar}>
               <TextInput
               autoCapitalize="none"
               autoCorrect={false}
@@ -20,15 +20,13 @@ class NavBar extends Component {
               returnKeyType="search"
               enablesReturnKeyAutomatically={true}
               ></TextInput>
-              </View>
-          </View>
-      </View>
+         </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    navbar: {
+    /*navbar: {
         backgroundColor: "black",
         paddingTop: 30,
         paddingBottom: 10,
@@ -45,9 +43,9 @@ const styles = StyleSheet.create({
         width: 50,
         color: "#FEFEFE",
         textAlign: "center"
-    },
+    },*/
     searchBar: {
-        marginTop: 64,
+        marginTop: 34,
         padding: 3,
         paddingLeft: 8,
         flexDirection: "row",
@@ -55,8 +53,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF"
     },
     searchBarInput: {
-        fontSize: 15,
         flex: 1,
+        fontSize: 15,
         height: 30,
     }
 });

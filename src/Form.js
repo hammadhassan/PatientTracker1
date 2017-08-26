@@ -9,10 +9,12 @@ state={
   day: ""
 }
 onChangeText() {
+  state={
   name: "",
   pro: "",
-  doctor:"",
-  day
+  doctor: "",
+  day: ""
+}
 }
   addPatients() {
     Alert(state, "")
