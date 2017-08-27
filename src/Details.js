@@ -3,17 +3,21 @@ import {  AppRegistry, StyleSheet, Text, View, } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class Details extends Component {
-  state = {
-    list: [
-      {
-      name: this.refs.name,
-      problem: this.refs.pro,
-      doctor: this.refs.dr,
-      day: this.refs.day,
-      time: new Date()
-      }
-    ]
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: [ {
+        name: this.state.name,
+        problem: this.state.pro,
+        gender: this.state.gender,
+        doctor: this.state.doc,
+        day: this.state.day,
+        time: new Date()
+        }
+      ]
+    }
   }
+
     static navigationOptions = {
         title: 'Patient Lucy',
       };
@@ -23,7 +27,11 @@ export default class Details extends Component {
             <Text>
               {this.state.list.map((value, i) => {
                 return <Text key={i}>
-                  
+                <Text>{this.state.name}</Text>
+                <Text>{this.state.problem}</Text>
+                <Text>{this.state.gender}</Text>
+                <Text>{this.state.doc}</Text>
+                <Text>{this.state.day}</Text>
                 </Text>
               })}
             </Text>

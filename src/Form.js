@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  StyleSheet, Text, View, Button, TextInput, Form, Alert} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default class PatientForm extends Component {
   constructor(props){
@@ -32,39 +32,44 @@ onPasswordChange(password) {
   this.setState(s);   
 }*/
   addPatients() {
-    // Alert()
-    this.setState({
-      name: "",
-      pro: "",
-      doc:"",
-      day: ""
-    })
-    // alert(state);
+    this.state = {
+      name: this.state.name, 
+      pro: this.state.pro,
+      gender: this.state.gender,
+      doc: this.state.doc,
+      day: this.state.day
+    }
+    // alert(this.state);
   }
 
-  onChangeText() {
-    this.setState({
-      name: name,
-      pro: pro,
-      doc: doc,
-      day: day
-    })
-  }
+  // onChangeText() {
+  //   this.setState({
+  //     name: name,
+  //     pro: pro,
+  //     doc: doc,
+  //     day: day
+  //   })
+  // }
 
   render() {
     return (
       <View>
-
-            <TextInput placeholder="Patient Name" 
-            onChangeText={name => { this.setState({ name }) }}></TextInput>
+            <TextInput placeholder="Patient Name"
+            onChangeText={text => { this.setState({ name: text }) }}></TextInput>
             <TextInput placeholder="Patient Problem" 
-            onChangeText={pro => { this.setState({ pro }) }}></TextInput>
+            onChangeText={text => { this.setState({ pro: text }) }}></TextInput>
+            <TextInput placeholder="Gender"
+            onChangeText={text => {this.setState({gender: text})}}></TextInput>
             <TextInput placeholder="Doctor Name" 
-            onChangeText={doc => { this.setState({ doc }) }}></TextInput>
+            onChangeText={text => { this.setState({ doc: text }) }}></TextInput>
             <TextInput placeholder="Day of Appointment" 
-            onChangeText={day => { this.setState({ day }) }}></TextInput>
+            onChangeText={text => { this.setState({ day: text }) }}></TextInput>
             <Button title="Add Patients" onPress={this.addPatients.bind(this)} style={styles.Button}/>
-
+            <Text>{this.state.name}</Text>
+            <Text>{this.state.pro}</Text>
+            <Text>{this.state.gender}</Text>
+            <Text>{this.state.doc}</Text>
+            <Text>{this.state.day}</Text>
       </View>
     );
   }
