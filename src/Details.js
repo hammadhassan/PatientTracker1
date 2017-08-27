@@ -5,26 +5,25 @@ import { StackNavigator } from 'react-navigation';
 export default class Details extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      list: [ {
-        name: this.state.name,
-        problem: this.state.pro,
-        gender: this.state.gender,
-        doctor: this.state.doc,
-        day: this.state.day,
-        time: new Date()
-        }
-      ]
-    }
+    // this.state = {
+    //   // list: [ {
+    //     name: this.state.name,
+    //     problem: this.state.pro,
+    //     gender: this.state.gender,
+    //     doctor: this.state.doc,
+    //     day: this.state.day,
+    //     }
+    //   // ]
+    // }
+  // }
   }
-
-    static navigationOptions = {
-        title: 'Patient Lucy',
-      };
+    // static navigationOptions = {
+    //     title: 'Patient Lucy',
+    //   };
     render() {
       return (
         <View>
-            <Text>
+            {/* <Text>
               {this.state.list.map((value, i) => {
                 return <Text key={i}>
                 <Text>{this.state.name}</Text>
@@ -34,7 +33,7 @@ export default class Details extends Component {
                 <Text>{this.state.day}</Text>
                 </Text>
               })}
-            </Text>
+            </Text> */}
         </View>
       );
     }
