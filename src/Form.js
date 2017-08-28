@@ -11,7 +11,9 @@ export default class PatientForm extends Component {
       gender: "",
       doctor:"",
       // day: ""
-    }
+    };
+    this.onGenderSelect = this.onGenderSelect.bind(this);
+    this.onDaySelect = this.onDaySelect.bind(this);
   }
 
   addPatients() {
@@ -38,12 +40,12 @@ export default class PatientForm extends Component {
     {/* selectedValue={this.state.gender}  */}
   }
 
-  onGenderSelect(gender) {
+  onGenderSelect = (gender) => {
     this.setState({
       gender: gender
     });
   }
-  onValueChange(day) {
+  onDaySelect = (day) => {
     this.setState({
       day: day
     });
@@ -58,17 +60,19 @@ export default class PatientForm extends Component {
             onChangeText={(text) => { this.setState({ problem: text }) }}></TextInput>
             <Text>Gender</Text>
             <Picker 
-            onChangeText={(text) => {this.onGenderSelect(gender)}}
-              onValueChange={this.onValueChange.bind(this)}>
+            selectedValue={this.state.gender}
+            onValueChange={(item) => this.onGenderSelect(item)}
+            >
                     <Picker.Item label="Male" value="male" />
                     <Picker.Item label="Female" value="female" />
             </Picker>
             <TextInput placeholder="Doctor Name" 
-            onChangeText={(text) => { this.setState({ doc: text }) }}></TextInput>
+            onChangeText={(text) => { this.setState({ doc: text }) }}>
+            </TextInput>
             <Text>Day of Appointment</Text>
             <Picker
-            onChangeText={(text) => {this.onValueChange(day)}}
-            
+            selectedValue={this.state.day}
+            onValueChange={(item) => this.onDaySelect(item)}
             >
               <Picker.Item label="Monday" value="monday" />
               <Picker.Item label="Tuesday" value="tuesday" />
@@ -81,9 +85,9 @@ export default class PatientForm extends Component {
             <Button title="Add Patients" onPress={this.addPatients.bind(this)} style={styles.Button}/>
             <Text>{this.state.name}</Text>
             <Text>{this.state.problem}</Text>
-            {/* <Text>{this.state.gender}</Text> */}
+            <Text>{this.state.gender}</Text>
             <Text>{this.state.doc}</Text>
-            {/* <Text>{this.state.day}</Text> */}
+            <Text>{this.state.day}</Text>
       </View>
     );
   }
