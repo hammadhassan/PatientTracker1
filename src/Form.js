@@ -34,10 +34,11 @@ export default class PatientForm extends Component {
       }
     }
     alert(patientData);
-    // this.props.navigation.navigate('Details');  
-    {/* onValueChange={(item) => this.watchGender(item)} */}
-    // onChangeText={text => {this.setState({gender: text})}}
-    {/* selectedValue={this.state.gender}  */}
+    // console.log(patientData);
+    // var db = firebase.database();
+    // let dbRef = db.ref().child('Patients');
+    // dbRef.push(patientData)
+    // this.props.navigation.navigate('ShowPatient');
   }
 
   onGenderSelect = (gender) => {
@@ -61,10 +62,10 @@ export default class PatientForm extends Component {
             <Text>Gender</Text>
             <Picker 
             selectedValue={this.state.gender}
-            onValueChange={(item) => this.onGenderSelect(item)}
+            onValueChange={(text) => this.onGenderSelect(text)}
             >
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
+                    <Picker.Item label="Male" value="Male" />
+                    <Picker.Item label="Female" value="Female" />
             </Picker>
             <TextInput placeholder="Doctor Name" 
             onChangeText={(text) => { this.setState({ doc: text }) }}>
@@ -72,15 +73,15 @@ export default class PatientForm extends Component {
             <Text>Day of Appointment</Text>
             <Picker
             selectedValue={this.state.day}
-            onValueChange={(item) => this.onDaySelect(item)}
+            onValueChange={(text) => this.onDaySelect(text)}
             >
-              <Picker.Item label="Monday" value="monday" />
-              <Picker.Item label="Tuesday" value="tuesday" />
-              <Picker.Item label="Wednesday" value="wednesday" />
-              <Picker.Item label="Thursday" value="thursday" />
-              <Picker.Item label="Friday" value="friday" />
-              <Picker.Item label="Saturday" value="saturday" />
-              <Picker.Item label="Sunday" value="sunday" />
+              <Picker.Item label="Monday" value="Monday" />
+              <Picker.Item label="Tuesday" value="Tuesday" />
+              <Picker.Item label="Wednesday" value="Wednesday" />
+              <Picker.Item label="Thursday" value="Thursday" />
+              <Picker.Item label="Friday" value="Friday" />
+              <Picker.Item label="Saturday" value="Saturday" />
+              <Picker.Item label="Sunday" value="Sunday" />
             </Picker>
             <Button title="Add Patients" onPress={this.addPatients.bind(this)} style={styles.Button}/>
             <Text>{this.state.name}</Text>
