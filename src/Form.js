@@ -37,7 +37,8 @@ export default class PatientForm extends Component {
         // day: this.state.day,
       }
     }
-    alert(patientData.patient);
+    // alert(patientData.patient);
+    console.log(patientData);
     // console.log(patientData);
     // var db = firebase.database();
     // let dbRef = db.ref().child('Patients');
@@ -67,6 +68,7 @@ export default class PatientForm extends Component {
             <Picker 
             selectedValue={this.state.gender}
             onValueChange={(text) => this.onGenderSelect(text)}>
+            <Picker.Item label="Select Gender" value="" />
              <Picker.Item label="Male" value="Male" />
              <Picker.Item label="Female" value="Female" />
             </Picker>
@@ -77,6 +79,7 @@ export default class PatientForm extends Component {
             <Picker
             selectedValue={this.state.day}
             onValueChange={(text) => this.onDaySelect(text)}>
+            <Picker.Item label="Select Day" value="" />
               <Picker.Item label="Monday" value="Monday" />
               <Picker.Item label="Tuesday" value="Tuesday" />
               <Picker.Item label="Wednesday" value="Wednesday" />

@@ -29,16 +29,16 @@ export default class Details extends Component {
       return (
         <View>
             <Text>
-              {this.state.List.map((value, i) => {
-                return <Text key={i}>
-                <Text>Name: {this.state.name}</Text>
-                <Text>Problem: {this.state.problem}</Text>
-                <Text>Gender: {this.state.gender}</Text>
-                <Text>Doctor: {this.state.doc}</Text>
-                <Text>Day of Appointment: {this.state.day}</Text>
+              {/* {this.state.List.map((value, i) => {
+                return <Text key={i}> */}
+                <Text>Name: {this.props.name}</Text>
+                <Text>Problem: {this.props.problem}</Text>
+                <Text>Gender: {this.props.gender}</Text>
+                <Text>Doctor: {this.props.doc}</Text>
+                <Text>Day of Appointment: {this.props.day}</Text>
                 </Text>
-              })}
-            </Text>
+              {/* })} */}
+            {/* </Text> */}
         </View>
       );
     }
