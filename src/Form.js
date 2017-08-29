@@ -5,13 +5,17 @@ export default class PatientForm extends Component {
   constructor(props){
     super(props)
     this.state={
+      List: [
+        {
       name: "",
       problem: "",
       // date: fullDate,
       gender: "",
       doctor:"",
-      // day: ""
-    };
+      day: ""
+    }
+  ]
+};
     this.onGenderSelect = this.onGenderSelect.bind(this);
     this.onDaySelect = this.onDaySelect.bind(this);
   }
@@ -33,7 +37,7 @@ export default class PatientForm extends Component {
         // day: this.state.day,
       }
     }
-    alert(patientData);
+    alert(patientData.patient);
     // console.log(patientData);
     // var db = firebase.database();
     // let dbRef = db.ref().child('Patients');
@@ -62,10 +66,9 @@ export default class PatientForm extends Component {
             <Text>Gender</Text>
             <Picker 
             selectedValue={this.state.gender}
-            onValueChange={(text) => this.onGenderSelect(text)}
-            >
-                    <Picker.Item label="Male" value="Male" />
-                    <Picker.Item label="Female" value="Female" />
+            onValueChange={(text) => this.onGenderSelect(text)}>
+             <Picker.Item label="Male" value="Male" />
+             <Picker.Item label="Female" value="Female" />
             </Picker>
             <TextInput placeholder="Doctor Name" 
             onChangeText={(text) => { this.setState({ doc: text }) }}>
@@ -73,8 +76,7 @@ export default class PatientForm extends Component {
             <Text>Day of Appointment</Text>
             <Picker
             selectedValue={this.state.day}
-            onValueChange={(text) => this.onDaySelect(text)}
-            >
+            onValueChange={(text) => this.onDaySelect(text)}>
               <Picker.Item label="Monday" value="Monday" />
               <Picker.Item label="Tuesday" value="Tuesday" />
               <Picker.Item label="Wednesday" value="Wednesday" />
@@ -96,6 +98,7 @@ export default class PatientForm extends Component {
 
 var styles = StyleSheet.create({
   Button: {
-    margin: 50
+    margin: 50,
+    width: 50
   }
 })

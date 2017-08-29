@@ -6,6 +6,50 @@ export default class Details extends Component {
   constructor(props) {
     super(props)
     this.state = {
+    List: [
+      {
+        name: "",
+        problem: "",
+        // date: fullDate,
+        gender: "",
+        doctor:"",
+        day: ""
+      }
+    ]
+  };
+}
+
+    // componentWillMount() {
+    // this.setState({
+    //   List: []
+    // });
+    // }
+
+    render() {
+      return (
+        <View>
+            <Text>
+              {this.state.List.map((value, i) => {
+                return <Text key={i}>
+                <Text>Name: {this.state.name}</Text>
+                <Text>Problem: {this.state.problem}</Text>
+                <Text>Gender: {this.state.gender}</Text>
+                <Text>Doctor: {this.state.doc}</Text>
+                <Text>Day of Appointment: {this.state.day}</Text>
+                </Text>
+              })}
+            </Text>
+        </View>
+      );
+    }
+  }
+
+    // <Text>Name: {value.name}</Text>
+    // <Text>Problem: {text.state.problem}</Text>
+    // <Text>Gender: {text.state.gender}</Text>
+    // <Text>Doctor: {text.state.doc}</Text>
+    // <Text>Day of Appointment: {text.state.day}</Text>
+
     //   // list: [ {
     //     name: this.state.name,
     //     problem: this.state.pro,
@@ -14,11 +58,8 @@ export default class Details extends Component {
     //     day: this.state.day,
     //     }
     //   // ]
-    data: []
-    };
 
-  }
-//   <DatePicker
+  //   <DatePicker
 //   style={{width: 200}}
 //   date={this.state.date}
 //   mode="date"
@@ -60,27 +101,3 @@ export default class Details extends Component {
   //         })
   //     })
   // }
-    componentWillMount() {
-    this.setState({
-      date: []
-    });
-    }
-
-    render() {
-      return (
-        <View>
-            <Text>
-              {this.state.data.map((value, i) => {
-                return <Text key={i}>
-                <Text>Name: {text.state.name}</Text>
-                <Text>Problem: {text.state.problem}</Text>
-                <Text>Gender: {text.state.gender}</Text>
-                <Text>Doctor: {text.state.doc}</Text>
-                <Text>Day of Appointment: {text.state.day}</Text>
-                </Text>
-              })}
-            </Text>
-        </View>
-      );
-    }
-  }
