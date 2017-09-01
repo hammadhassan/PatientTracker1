@@ -38,8 +38,9 @@ export default class PatientForm extends Component {
         // day: this.state.day,
       }
     }
+    // patient.push(patientData);
     // alert(patientData.patient);
-    console.log(patientData);
+    //console.log(patientData);
     // console.log(patientData);
     // var db = firebase.database();
     // let dbRef = db.ref().child('Patients');

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import {  AppRegistry, StyleSheet, Text, View, } from 'react-native';
+import {  AppRegistry, StyleSheet, Text, View, SectionList, ListView} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class Details extends Component {
   constructor(props) {
     super(props)
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    // this.state = {
+    // };
     this.state = {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
     List: [
       {
         name: "Hammad",
@@ -19,20 +23,20 @@ export default class Details extends Component {
   };
 }
 
-    componentWillMount() {
-    this.setState({
-      List: [
-        {
-          name: "Hammad",
-          problem: "Floaters",
-          // date: fullDate,
-          gender: "Male",
-          doctor:"Dr Tayyaba",
-          day: "Friday"
-        }
-      ]
-    });
-    }
+    // componentWillMount() {
+    // this.setState({
+    //   List: [
+    //     {
+    //       name: "Hammad",
+    //       problem: "Floaters",
+    //       // date: fullDate,
+    //       gender: "Male",
+    //       doctor:"Dr Tayyaba",
+    //       day: "Friday"
+    //     }
+    //   ]
+    // });
+    // }
 
     render() {
       return (

@@ -5,19 +5,21 @@ import { TabNavigator } from 'react-navigation';
 import Details from "./src/Details";
 import PatientForm from "./src/Form";
 import NavBar from "./src/NavBar";
+// import Header from "./src/NavBar";
 
 export default class PatientsTracker1 extends Component {
   static navigationOptions = {
     title: 'Welcome',
   };
+  
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View>
-         <Button
+         {/* <Button
           onPress={() => navigate('Details')}
           title="Click for details"
-        />
+        /> */}
           <PatientForm />
       </View>
     );
