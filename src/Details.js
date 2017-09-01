@@ -8,37 +8,51 @@ export default class Details extends Component {
     this.state = {
     List: [
       {
-        name: "",
-        problem: "",
+        name: "Hammad",
+        problem: "Floaters",
         // date: fullDate,
-        gender: "",
-        doctor:"",
-        day: ""
+        gender: "Male",
+        doctor:"Dr Tayyaba",
+        day: "Friday"
       }
     ]
   };
 }
 
-    // componentWillMount() {
-    // this.setState({
-    //   List: []
-    // });
-    // }
+    componentWillMount() {
+    this.setState({
+      List: [
+        {
+          name: "Hammad",
+          problem: "Floaters",
+          // date: fullDate,
+          gender: "Male",
+          doctor:"Dr Tayyaba",
+          day: "Friday"
+        }
+      ]
+    });
+    }
 
     render() {
       return (
         <View>
             <Text>
-              {/* {this.state.List.map((value, i) => {
-                return <Text key={i}> */}
-                <Text>Name: {this.props.name}</Text>
-                <Text>Problem: {this.props.problem}</Text>
-                <Text>Gender: {this.props.gender}</Text>
-                <Text>Doctor: {this.props.doc}</Text>
-                <Text>Day of Appointment: {this.props.day}</Text>
+              {this.state.List.map((value, i) => {
+                return <Text key={i}>
+                <Text>Name:</Text>
+                <Text>{value.name}</Text>
+                <Text>Problem:</Text>
+                <Text>{value.problem}</Text>
+                <Text>Gender: </Text>
+                <Text>{value.gender}</Text>
+                <Text>Doctor:</Text>
+                <Text>{value.doctor}</Text>
+                <Text>Day of Appointment: </Text>
+                <Text>{value.day}</Text>
                 </Text>
-              {/* })} */}
-            {/* </Text> */}
+              })}
+            </Text>
         </View>
       );
     }

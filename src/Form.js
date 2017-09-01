@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList, Picker } from 'react-native';
+import Details from "./Details";
 
 export default class PatientForm extends Component {
   constructor(props){
@@ -89,6 +90,7 @@ export default class PatientForm extends Component {
               <Picker.Item label="Sunday" value="Sunday" />
             </Picker>
             <Button title="Add Patients" onPress={this.addPatients.bind(this)} style={styles.Button}/>
+            <Details />
             <Text>{this.state.name}</Text>
             <Text>{this.state.problem}</Text>
             <Text>{this.state.gender}</Text>
