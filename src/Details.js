@@ -23,11 +23,11 @@ export default class Details extends Component {
     // List
     List : [
       {
-        name: this.props.PatientData,
+        name: "Hammad Hassan",
         problem: "Floaters",
         // date: fullDate,
         gender: "Male",
-        doctor:"Dr Tayyaba",
+        doctor:"Dr Illyass",
         day: "Friday"
       }
     ]
