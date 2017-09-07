@@ -5,7 +5,7 @@ import { TabNavigator } from 'react-navigation';
 import Details from "./src/Details";
 import PatientForm from "./src/Form";
 import NavBar from "./src/NavBar";
-// import Header from "./src/NavBar";
+// import ListViews from "./src/ListViews";
 
 export default class PatientsTracker1 extends Component {
   static navigationOptions = {

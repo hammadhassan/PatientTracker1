@@ -5,14 +5,25 @@ import { StackNavigator } from 'react-navigation';
 export default class Details extends Component {
   constructor(props) {
     super(props)
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    // const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     // this.state = {
     // };
+    // var List = [
+    //   {
+    //     name: "Hammad",
+    //     problem: "Floaters",
+    //     // date: fullDate,
+    //     gender: "Male",
+    //     doctor:"Dr Tayyaba",
+    //     day: "Friday"
+    //   }
+    // ]
     this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-    List: [
+      // dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    // List
+    List : [
       {
-        name: "Hammad",
+        name: this.props.PatientData,
         problem: "Floaters",
         // date: fullDate,
         gender: "Male",
@@ -23,59 +34,42 @@ export default class Details extends Component {
   };
 }
 
-    // componentWillMount() {
-    // this.setState({
-    //   List: [
-    //     {
-    //       name: "Hammad",
-    //       problem: "Floaters",
-    //       // date: fullDate,
-    //       gender: "Male",
-    //       doctor:"Dr Tayyaba",
-    //       day: "Friday"
-    //     }
-    //   ]
-    // });
-    // }
+componentWillMount() {
+  PatientData = this.props.PatientData.Patients;
+  // alert(PatientData);
+  // this.setState({
+  //   List: PatientData
+  // })
+}
 
+// PaitentList() {
+//   return List(function(patient, i) {
+//     return (
+//       <View key={i}>
+//         <Text>{patient.name}</Text>
+//         <View>
+//           <Text>{patient.doctor}</Text>
+//         </View>
+//       </View>
+//     )
+//   })
+// }
     render() {
       return (
-        <View>
-            <Text>
+          <View>
               {this.state.List.map((value, i) => {
-                return <Text key={i}>
-                <Text>Name:</Text>
-                <Text>{value.name}</Text>
-                <Text>Problem:</Text>
-                <Text>{value.problem}</Text>
-                <Text>Gender: </Text>
-                <Text>{value.gender}</Text>
-                <Text>Doctor:</Text>
-                <Text>{value.doctor}</Text>
-                <Text>Day of Appointment: </Text>
-                <Text>{value.day}</Text>
-                </Text>
+                return <View key={i}>
+                  <Text>Name: {value.name}</Text>
+                  <Text>Problem: {value.problem}</Text>
+                  <Text>Gender: {value.gender}</Text>
+                  <Text>Doctor: {value.doctor}</Text>
+                  <Text>Day of Appointment: {value.day}</Text>
+                </View>
               })}
-            </Text>
-        </View>
+      </View>
       );
     }
   }
-
-    // <Text>Name: {value.name}</Text>
-    // <Text>Problem: {text.state.problem}</Text>
-    // <Text>Gender: {text.state.gender}</Text>
-    // <Text>Doctor: {text.state.doc}</Text>
-    // <Text>Day of Appointment: {text.state.day}</Text>
-
-    //   // list: [ {
-    //     name: this.state.name,
-    //     problem: this.state.pro,
-    //     gender: this.state.gender,
-    //     doctor: this.state.doc,
-    //     day: this.state.day,
-    //     }
-    //   // ]
 
   //   <DatePicker
 //   style={{width: 200}}
