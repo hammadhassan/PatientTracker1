@@ -6,17 +6,7 @@ export default class PatientForm extends Component {
   constructor(props){
     super(props)
     this.state={
-     List: [
-    //     {
-    //   name: "this.state",
-    //   problem: "",
-    //   // date: fullDate,
-    //   gender: "",
-    //   doctor:"",
-    //   day: ""
-    // }
-  ],
-  // List : PatientData
+     Data: []
 };
     this.onGenderSelect = this.onGenderSelect.bind(this);
     this.onDaySelect = this.onDaySelect.bind(this);
@@ -25,7 +15,7 @@ export default class PatientForm extends Component {
   addPatients() {
     var date = new Date();
     // console.log(date)
-    var List = [];
+    var data = [];
     var day = date.getDate();
     var month = date.getMonth();
     var year = date.getFullYear();
@@ -40,7 +30,7 @@ export default class PatientForm extends Component {
         day: this.state.day,
       }
     }
-    alert(PatientData.Patients.name)
+    // alert(PatientData.Patients.name)
     this.props.navigation.navigate('Details');
   }
 
@@ -57,7 +47,7 @@ export default class PatientForm extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.form}>
             <TextInput placeholder="Patient Name"
               onChangeText={(text) => { this.setState({ name: text }) }}></TextInput>
             <TextInput placeholder="Patient Problem" 
@@ -98,6 +88,9 @@ export default class PatientForm extends Component {
 }
 
 var styles = StyleSheet.create({
+  form: {
+    flex: 1
+  },
   Button: {
     margin: 50,
     width: 50

@@ -3,22 +3,13 @@ import {StyleSheet, Text, Button, View} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class Home extends Component {
-// constructor(){
-//     super()
-//     onPress = this.onPress.bind(this);
-// }
-
-
-// onPress() {
-//     alert("add");
-//     this.props.Add
-//     }
 
   render() {
     return (
         <View>
-            <Text>Welcome to the App</Text>
+            <Text style={styles.home}>Welcome to the App</Text>
             <Button onPress={this.props.Add} title="Add Patients"/>
+            <Text></Text>
             <Button style={styles.btn} onPress={this.props.View} title="View Patients"/>
         </View>
     );
@@ -26,8 +17,8 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-    btn: {
-        padding: 5,
-        // margin: 10
-      }
+    home: {
+        paddingBottom: 10,
+        fontSize: 24,
+    }
 });
