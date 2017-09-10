@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList, Picker } from 'react-native';
-// import Details from "./Details";
+import { StackNavigator } from 'react-navigation';
 
 export default class PatientForm extends Component {
   constructor(props){
@@ -40,16 +40,8 @@ export default class PatientForm extends Component {
         day: this.state.day,
       }
     }
-    // PatientData.Patients.push(List);
     alert(PatientData.Patients.name)
-    // patient.push(patientData);
-    // alert(patientData.patient);
-    //console.log(patientData);
-    // console.log(patientData);
-    // var db = firebase.database();
-    // let dbRef = db.ref().child('Patients');
-    // dbRef.push(patientData)
-    // this.props.navigation.navigate('ShowPatient');
+    this.props.navigation.navigate('Details');
   }
 
   onGenderSelect = (gender) => {

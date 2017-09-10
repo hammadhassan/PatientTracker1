@@ -35,7 +35,7 @@ export default class Details extends Component {
 }
 
 componentWillMount() {
-  PatientData = this.props.PatientData.Patients;
+  PatientData = this.props.Patients;
   // alert(PatientData);
   // this.setState({
   //   List: PatientData

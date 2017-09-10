@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {  AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
-// import Home from "./src/Home";
-import { TabNavigator } from 'react-navigation';
+import Home from "./src/Home";
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import Details from "./src/Details";
-import PatientForm from "./src/Form";
+import PatientForm from "./src/PatientForm";
 import NavBar from "./src/NavBar";
-// import ListViews from "./src/ListViews";
 
 export default class PatientsTracker1 extends Component {
   static navigationOptions = {
@@ -13,42 +12,41 @@ export default class PatientsTracker1 extends Component {
   };
   
   render() {
-    const { navigate } = this.props.navigation;
+    // const { navigate } = this.props.navigation;
     return (
-      <View>
-         {/* <Button
-          onPress={() => navigate('Details')}
-          title="Click for details"
-        /> */}
-          <PatientForm />
+      <View style={styles.container}>
+          <Home
+          Add={() => this.props.navigation.navigate("AddPatients")}
+          View={() => this.props.navigation.navigate("Details")}
+          />
       </View>
     );
   }
 }
 
+// const Main = TabNavigator({
+//   AddPatients: {screen: PatientForm},
+//   Details: {screen: Details},
+// })
 const AppHome = TabNavigator({
   Home: {screen: PatientsTracker1},
-  Details: { screen: Details},
+  // Second: {screen: Main},
+  Main: { 
+    screen: StackNavigator({
+      AddPatients: {screen: PatientForm},
+      Details: {screen: Details},
+    }),
   Patients : { screen: NavBar }
+   }
 });
 
+
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#F5FCFF',
-  // },
-  // welcome: {
-  //   fontSize: 20,
-  //   textAlign: 'center',
-  //   margin: 10,
-  // },
-  // instructions: {
-  //   textAlign: 'center',
-  //   color: '#333333',
-  //   marginBottom: 5,
-  // },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 AppRegistry.registerComponent('PatientsTracker1', () => AppHome);
