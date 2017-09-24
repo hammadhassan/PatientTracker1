@@ -1,40 +1,80 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, Picker } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, Picker, AsyncStorage, ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class PatientForm extends Component {
   constructor(props){
     super(props)
     this.state={
-     Data: []
-};
+      name: "",
+      problem: "",
+      gender: "",
+      doctor:"",
+      day: "",
+      PatientsDetails: []
+    }
     this.onGenderSelect = this.onGenderSelect.bind(this);
     this.onDaySelect = this.onDaySelect.bind(this);
+    this.addPatients = this.addPatients.bind(this);
   }
+  
+  static navigationOptions = {
+        title: "Add Patients",
+    };
+
+    // saveData(PatientsDetails) {
+    //   AsyncStorage.setItem("@PatientsList:Patients",
+    //     JSON.stringify(PatientsDetails)
+    //   )
+    // }
 
   addPatients() {
+    const { name, problem, gender , doctor } = this.state;
     var date = new Date();
-    // console.log(date)
-    var data = [];
     var day = date.getDate();
-    var month = date.getMonth();
+    var month = date.getMonth()+1;
     var year = date.getFullYear();
-    var fullDate = month + '/' + day + '/' + year;
-    var PatientData = {          
-      Patients: {
-        name: this.state.name, 
-        problem: this.state.problem,
-        gender: this.state.gender,
-        // date: fullDate,
-        doc: this.state.doc,
-        day: this.state.day,
-      }
-    }
-    // alert(PatientData.Patients.name)
-    this.props.navigation.navigate('Details');
-  }
+    var fullDate = day + "/" + month + "/" + year;
+    // var PatientsData = {          
+    //   Patient: {
+    //     name: this.state.name, 
+    //     problem: this.state.problem,
+    //     gender: this.state.gender,
+    //     date: fullDate,
+    //     doc: this.state.doc,
+    //     day: this.state.day,
+    //   }
+    // }  
+    // const data = { name, problem, gender , doctor, date: fullDate};
+    
+    AsyncStorage.getItem('key', (err, snap) =>{
+    var info = JSON.parse(snap);
+    alert(info);  
+    if (info !== null ) {
+        // alert("!null")
+        if (Array.isArray(info)) {
+          // alert("Array");
+          AsyncStorage.setItem("key", JSON.stringify(info.concat(data)))
+        } else {
+          alert("details");
+          AsyncStorage.setItem("key", JSON.stringify([data]))
+        }
+       } else {
+          alert("detail");
+          AsyncStorage.setItem("key", JSON.stringify([data]))
+        }
+        alert(data, "Patient has been added")
+    });
+    this.setState({
+      name: "",
+      problem: "",
+      gender: "",
+      doctor:"",
+      day: "",
+    });
+}
 
-  onGenderSelect = (gender) => {
+onGenderSelect = (gender) => {
     this.setState({
       gender: gender
     });
@@ -46,8 +86,10 @@ export default class PatientForm extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
-      <View style={styles.form}>
+      <View>
+            <ScrollView>
             <TextInput placeholder="Patient Name"
               onChangeText={(text) => { this.setState({ name: text }) }}></TextInput>
             <TextInput placeholder="Patient Problem" 
@@ -60,8 +102,8 @@ export default class PatientForm extends Component {
              <Picker.Item label="Male" value="Male" />
              <Picker.Item label="Female" value="Female" />
             </Picker>
-            <TextInput placeholder="Doctor Name" 
-            onChangeText={(text) => { this.setState({ doc: text }) }}>
+            <TextInput placeholder=" Doctor Name" 
+            onChangeText={(text) => { this.setState({ doctor: text }) }}>
             </TextInput>
             <Text>Day of Appointment</Text>
             <Picker
@@ -76,18 +118,19 @@ export default class PatientForm extends Component {
               <Picker.Item label="Saturday" value="Saturday" />
               <Picker.Item label="Sunday" value="Sunday" />
             </Picker>
-            <Button title="Add Patients" onPress={this.addPatients.bind(this)} style={styles.Button}/>
+            <Button title="Add Patients" onPress={this.addPatients} style={styles.Button}/>
             <Text>{this.state.name}</Text>
             <Text>{this.state.problem}</Text>
             <Text>{this.state.gender}</Text>
-            <Text>{this.state.doc}</Text>
+            <Text>{this.state.doctor}</Text>
             <Text>{this.state.day}</Text>
+            </ScrollView>
       </View>
     );
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   form: {
     flex: 1
   },
