@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View,  TextInput, StyleSheet } from 'react-native';
-import * as firebase from "firebase";
+import { View,  TextInput, StyleSheet, AsyncStorage } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text, Separator , Item, Input, Button } from 'native-base';
 
 class SearchByDate extends Component {
@@ -21,29 +20,29 @@ class SearchByDate extends Component {
     }
 
 	getDataByDate() {
-            var array = []
-            var foundedData = []
-            let dataBase = firebase.database().ref().child("Patients")
-            dataBase.on("value", (object) => {
-                let key = object.val()
-                for (var a in key) {
-                    array.push(key[a].Patient)
-                }
-                array.map((Patient) => {
-                    if (Patient.date === this.state.date) {
-                        foundedData.push(Patient)
-                //   this.setState({
-                //     data: foundedData
-                // })
-                    }  
-                    // else {
-                    //   alert("Data not found");
-                    // }
-                })
-                this.setState({
-                    data: foundedData
-                })
-            })
+            AsyncStorage.getItem('Patients')
+            .then((responce) => {
+              let newdata = []
+              var foundedData = []
+              // console.log(responce)
+              let mydata = JSON.parse(responce)
+              // console.log(mydata)   
+              // console.log(mydata.length)   
+              // console.log(newdata)
+              for (i = 0; i < mydata.length; i++) {
+                newdata.push(mydata[i]);
+                // console.log(newdata)
+                // console.log(this.state.data)
+            }                      
+               newdata.map((obj) => {
+             if (obj.date === this.state.date) {
+                foundedData.push(obj)
+            }
+        })                 
+             this.setState({
+                 data: foundedData  
+             })
+      })
     }
 
     render() {
@@ -62,23 +61,23 @@ class SearchByDate extends Component {
                onPress={this.getDataByDate}>
                <Text>Search Patient</Text>
              </Button>
-                {this.state.data.map((data, index) => {
+                {this.state.data.map((value, index) => {
                     return    (    
             <List key={index} style={styles.list}>
                 <ListItem  bordered>
-                  <Text style={styles.pList} >Name : {data.name}</Text>
+                  <Text style={styles.pList} >Name : {value.name}</Text>
                 </ListItem>
                 <ListItem bordered>
-                  <Text style={styles.pList}>Problem : {data.problem}</Text>
+                  <Text style={styles.pList}>Problem : {value.problem}</Text>
                 </ListItem>
                 <ListItem bordered>
-                  <Text style={styles.pList}> Date: {data.date}</Text>
+                  <Text style={styles.pList}> Date: {value.date}</Text>
                 </ListItem>
                 <ListItem bordered>
-                  <Text style={styles.pList}>Gender : {data.gender}</Text>
+                  <Text style={styles.pList}>Gender : {value.gender}</Text>
                 </ListItem >
       		   <ListItem bordered>
-                  <Text style={styles.pList}> Doctor : {data.doc}</Text>
+                  <Text style={styles.pList}> Doctor : {value.doctor}</Text>
                 </ListItem>
            </List>
                     )

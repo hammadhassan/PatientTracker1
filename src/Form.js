@@ -1,112 +1,83 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, FlatList, Picker, ScrollView, AsyncStorage } from 'react-native';
-import firebase from "firebase";
 import { FormLabel, FormInput } from 'react-native-elements'
 import { Container, Content, Text, Button } from 'native-base';
+
+var Data = [];
 
 export default class PatientForm extends Component {
   static navigationOptions = {
     title: 'Patient Form',
 };
-
   constructor(props){
     super(props)
     this.state={
       name: "",
       problem: "",
       gender: "",
-      doc:"",
+      doctor:"",
       day: ""
 };
     this.onGenderSelect = this.onGenderSelect.bind(this);
     this.onDaySelect = this.onDaySelect.bind(this);
-    console.ignoredYellowBx =[
-            'Setting a timer'
-        ] ;
+    // console.disableYellowBox = true
+  }
+  
+componentWillMount () {
+    console.disableYellowBox = true
+        AsyncStorage.getItem('Patients')
+            .then((data) => {
+            if (data !== null) {
+            var newdata = JSON.parse(data)
+            // console.log(newdata)
+            for (i = 0; i < newdata.length; i++) {
+            // console.log(newdata[i])
+            Data.push(newdata[i])
+            // Data.push(newdata)
+          }
+        // console.log(array)
+        // console.log("Saved Data")
+      }
+    })
   }
 
   addPatients() {
+    // var Data = [];
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth()+1;
     var year = date.getFullYear();
     var fullDate = day + '/' + month + '/' + year;
-    var PatientsData = {
-      Patient: {
+    
+    if (this.state.name !== '' &&  this.state.problem !== '' && this.state.gender !== ''
+        && this.state.doctor !== '' && this.state.day !== ''
+  ) { var PatientsData = {
         name: this.state.name, 
         problem: this.state.problem,
         gender: this.state.gender,
         date: fullDate,
-        doc: this.state.doc,
+        doctor: this.state.doctor,
         day: this.state.day,
-        setData: []
-      }
     }
-    console.log(PatientsData)
-    this.setItem(PatientsData);
-    // var db = firebase.database();
-    // let dbRef = db.ref().child('Patients');
-    // dbRef.push(PatientsData);
-    // alert("You Patient has been added in your list.");
-    // var Data = this.state.value;
-    // AsyncStorage.setItem('key', Data)
-    //   .then(() => {
-    //     alert(Data)
-    //   })
-    //   .catch((err) => {
-    //     alert("Error" + err)
-    //   })
-    //   var Data = this.state.setData;
-    // AsyncStorage.setItem('key', Data)
-    //   .then(() => {
-    //     alert(Data)
-    //   })
-    //   .catch((err) => {
-    //     alert("Error" + err)
-    //   })
-
-    // this.setState({
-    //   name: "",
-    //   problem: "",
-    //   gender: "",
-    //   doc:"",
-    //   day: ""
-    // })
+      Data.push(PatientsData)
+      // console.log(Data)
+      AsyncStorage.setItem('Patients', JSON.stringify(Data))
+      .then(() => {
+                alert("Patient has been added")
+            })
+         }
+        else{
+            alert('Fill the Complete Information')
+        }
+    this.setState({
+      name: "",
+      problem: "",
+      gender: "",
+      doctor:"",
+      day: ""
+    })
     // this.props.navigation.navigate('Details');
   }
-  async componentDidMount() {
-        try {
-            const value = await AsyncStorage.getItem('Patients');
-            if (value !== null) {
-                // We have data!!
-                parsedVal = JSON.parse(value);
-                // console.log(parsedVal);
-                this.setState({
-                    setData: parsedVal
-                })
-                // console.log(this.state)
-            }
-        } catch (error) {
-            // Error retrieving data
-            console.log('error get item', error);
-        }        
-    }
-
-    async setItem(obj) {
-        var arrayToPushedData = [];
-        arrayToPushedData = this.state.setData;
-        arrayToPushedData.push(obj);
-
-        try {
-            await AsyncStorage.setItem('Patients', JSON.stringify(arrayToPushedData));
-            console.log(arrayToPushedData);
-
-        }
-        catch (error) {
-            // Error saving data
-            console.log('error in setItem', error)
-        }
-    }
 
   onGenderSelect = (gender) => {
     this.setState({
@@ -118,9 +89,7 @@ export default class PatientForm extends Component {
       day: day
     });
   }
-componentWillMount() {
-        console.disableYellowBox = true
-    }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -149,9 +118,9 @@ componentWillMount() {
             </Picker>
             <FormLabel>Doctor</FormLabel>
               <FormInput 
-              value={this.state.doc} 
+              value={this.state.doctor} 
               placeholder="Doctor Name" 
-              onChangeText={(text) => { this.setState({ doc: text }) }}
+              onChangeText={(text) => { this.setState({ doctor: text }) }}
               />
             <FormLabel>Day of Appointment</FormLabel>
             <Picker
