@@ -137,14 +137,14 @@ componentWillMount () {
               <Picker.Item label="Sunday" value="Sunday" />
             </Picker>
             
-            <Container>
-          <Content>
+            <Container style={styles.list}>
+            <Content>
             <Button primary
             onPress={this.addPatients.bind(this)}
             style={styles.button}
             ><Text> Add Patients </Text></Button>
-          </Content>
-      </Container>
+            </Content>
+            </Container>
           </ScrollView>
       </View>
     );
@@ -155,5 +155,13 @@ var styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center"
+  },
+  list: {
+    marginTop: 5,
+    marginBottom: 5,
+    justifyContent: "center",
+    textAlign: "center",
+    alignSelf: "center",
+    flex: 2
   }
 })

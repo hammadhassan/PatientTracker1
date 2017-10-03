@@ -36,8 +36,18 @@ class SearchByName extends Component {
                   newdata.map((obj) => {
                   if (obj.name === this.state.name) {
                       foundedData.push(obj)
-                  }
-                })                 
+                      // console.log(obj)
+                  } 
+                  // else {
+                  //   alert("Patient not found")
+                  // }
+                })
+                if (foundedData === name) {
+                  // alert("Patient not found")
+                }
+                  else {
+                    alert("Patient not found")
+                  }                
                  this.setState({
                  data: foundedData  
                })
@@ -56,7 +66,7 @@ class SearchByName extends Component {
             />
           </Item>
               <Button 
-              style={styles.pList}
+              style={styles.btn}
                onPress={this.getDataByName.bind(this)}>
                <Text>Search Patient</Text>
              </Button>
@@ -89,14 +99,15 @@ class SearchByName extends Component {
 export default SearchByName;
 
 const styles = StyleSheet.create({
-  pList: {
-   marginTop :20,
-   marginLeft :20,
-  },
   list: {
     borderWidth: 1
   },
   container: {
     backgroundColor: "white"
   },
+  btn: {
+    marginTop :10,
+    marginBottom: 10,
+    alignSelf: "center",
+  }
 })

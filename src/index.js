@@ -20,7 +20,7 @@ class Main extends Component {
       {/* <StatusBar hidden={true}/> */}
           <Home
           Add={() => navigate("AddPatients")}
-          View={() => navigate("Details")}
+          View={() => navigate("Patients")}
           />
       </View>
     );

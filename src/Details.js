@@ -53,7 +53,9 @@ refreshList() {
   render() {
     return (
         <ScrollView style={styles.container}>
-        {this.refreshList()}
+          <View style={styles.Rlist} >
+           {this.refreshList()}
+           </View>
           <Container style={styles.container}>
           <Content style={styles.container}>
           {this.state.data.map((value, index) => {
@@ -98,5 +100,13 @@ const styles = StyleSheet.create({
     marginTop :20,
     marginLeft :20,
     marginRight: 20
+  },
+  Rlist: {
+    marginTop: 5,
+    marginBottom: 5,
+    justifyContent: "center",
+    textAlign: "center",
+    alignSelf: "center",
+    flex: 2
   }
 })

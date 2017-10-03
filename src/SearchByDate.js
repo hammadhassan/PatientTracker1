@@ -37,6 +37,9 @@ class SearchByDate extends Component {
                newdata.map((obj) => {
              if (obj.date === this.state.date) {
                 foundedData.push(obj)
+                alert("Patient found")
+            } else {
+              alert("Patient not found")
             }
         })                 
              this.setState({
@@ -50,14 +53,14 @@ class SearchByDate extends Component {
           <Container style={styles.container}>
           <Content style={styles.container}>
           <Item>
-            <Input placeholder='Enter Date : 11/9/2017' 
+            <Input placeholder='Enter Date : 24/9/2017' 
                   onChangeText={(text) => {
                     this.setState({ date: text })
                 }}
             />
           </Item>
               <Button 
-              style={styles.pList}
+              style={styles.btn}
                onPress={this.getDataByDate}>
                <Text>Search Patient</Text>
              </Button>
@@ -90,14 +93,15 @@ class SearchByDate extends Component {
 export default SearchByDate;
 
 const styles = StyleSheet.create({
-  pList: {
-   marginTop :20,
-   marginLeft :20,
-  },
   list: {
     borderWidth: 1
   },
   container: {
     backgroundColor: "white"
   },
+  btn: {
+    marginTop :10,
+    marginBottom: 10,
+    alignSelf: "center",
+  }
 })
