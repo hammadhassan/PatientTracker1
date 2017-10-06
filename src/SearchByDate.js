@@ -36,11 +36,12 @@ class SearchByDate extends Component {
             }                      
                newdata.map((obj) => {
              if (obj.date === this.state.date) {
+               // alert("Patient found")
                 foundedData.push(obj)
-                alert("Patient found")
-            } else {
-              alert("Patient not found")
             }
+            //  else {
+            //   alert("Patient not found")
+            // }
         })                 
              this.setState({
                  data: foundedData  

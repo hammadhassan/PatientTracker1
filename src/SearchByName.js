@@ -42,12 +42,12 @@ class SearchByName extends Component {
                   //   alert("Patient not found")
                   // }
                 })
-                if (foundedData === name) {
-                  // alert("Patient not found")
-                }
-                  else {
-                    alert("Patient not found")
-                  }                
+                // if (foundedData === name) {
+                //   // alert("Patient not found")
+                // }
+                //   else {
+                //     alert("Patient not found")
+                //   }                
                  this.setState({
                  data: foundedData  
                })
